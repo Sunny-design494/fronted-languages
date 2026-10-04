@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS导入方式及语法</title>
+    <script>
+       console.log("Hello,head标签的内联样式");
+    </script>
+    <script src="./js/myscript.js"></script>
+</head>
+<body>
+    <h1>JS导入方式</h1>
+    <script>
+       console.log("Hello,body标签的内联样式");
+       alert("Hello,body标签的内联样式");
+       var x;
+       let y = 5;
+       const PI = 3.14;/*变量创建*/
+       console.log(x, y, PI);
+       let empty_value = null;
+       let age = 19;
+       if(age >= 18){
+           console.log("成年人");
+       }
+       let time = 12;
+       if(time < 10){
+           console.log("早上好");   
+         }else if(time < 20){
+           console.log("下午好");       
+         }else{
+           console.log("晚上好");       
+         }/*条件语句*/
+         for(let i = 1;i<=10;i++){
+        console.log('i');
+         }/*循环*/
+        /*函数*/
+        function hello_with_partens(name){
+            console.log('hello,' + name);
+        }
+         hello_with_partens('刘欣怡');
+    </script>
+
+    
+</body>
+</html>

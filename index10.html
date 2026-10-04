@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM改变内容</title>
+</head>
+<body>
+    <div id="box1">哈哈哈</div>
+    <div class="box2">嘿嘿嘿</div>
+    <div>普通的标签</div>
+    <button>点击按钮</button>
+    <script>
+        var element_id = document.getElementById('box1');
+        var element_class = document.getElementsByClassName('box2')[0];
+        var element_tag = document.getElementsByTagName('div')[2];
+        console.log(element_id);
+        console.log(element_class);
+        console.log(element_tag);
+        element_id.innerHTML ='我把它修改了';//会解析
+        element_class.innerText ='在修改';//纯文本
+        element_class.style.color = 'pink';
+        //DOM属性绑定事件
+        var button_element = document.getElementsByTagName('button')[0];
+        console.log(button_element);
+        // button_element.onclick = function(){
+        //     alert ('DOM属性 按键触发');
+        // }
+        button_element.addEventListener('click',function(){
+            alert('通过 addEventListener 触发按键');
+        })
+    </script>
+</body>
+</html>

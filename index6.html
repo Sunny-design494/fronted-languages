@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动</title>
+    <style>
+        .father{
+            background-color: aquamarine;
+            /* height: 200px; */
+            border: 5px solid red;
+            overflow: hidden;/*清除浮动*/
+
+        }
+        .father::after{
+            content:"";
+            display:table;
+            clear:both;
+        }/*清除浮动*/
+        .left-son{
+          width: 100px;
+          height: 100px;
+          background-color:     blue;
+          float: left;
+        }
+        .right-son{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: right;
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="left-son">左浮动</div>
+        <div class="right-son">右浮动</div>
+    </div>
+    <p>这里是刘欣怡打的一个超长段落，刘欣怡你打字怎么这么快，简直是太厉害了，我真是十分地敬佩，刘欣怡最优秀这里是刘欣怡打的一个超长段落，刘欣怡你打字怎么这么快，简直是太厉害了，我真是十分地敬佩，刘欣怡最优秀这里是刘欣怡打的一个超长段落，刘欣怡你打字怎么这么快，简直是太厉害了，我真是十分地敬佩，刘欣怡最优秀这里是刘欣怡打的一个超长段落，刘欣怡你打字怎么这么快，简直是太厉害了，我真是十分地敬佩，刘欣怡最优秀</p>
+</body>
+</html>

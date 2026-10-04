@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>美食节活动报名</title>
+    <!-- 1. 外部引入样式表，不使用行内样式 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- 6. 页头 header 设置背景图 -->
+    <header>校园美食节 · 欢乐开启</header>
+
+    <h2>美食节活动安排表</h2>
+    <!-- 活动表格（保留原有合并单元格功能） -->
+    <table>
+        <tr>
+            <th>活动日期</th>
+            <th>时间段</th>
+            <th>活动内容</th>
+            <th>活动地点</th>
+        </tr>
+        <tr>
+            <td rowspan="2">6月16日</td>
+            <td>上午 09:00-12:00</td>
+            <td>美食制作体验</td>
+            <td>一号食堂大厅</td>
+        </tr>
+        <tr>
+            <td>下午 14:00-17:00</td>
+            <td>美食品鉴大赛</td>
+            <td>一号食堂大厅</td>
+        </tr>
+        <tr>
+            <td>6月17日</td>
+            <td>全天</td>
+            <td>特色小吃展销</td>
+            <td>校园步行街</td>
+        </tr>
+    </table>
+
+    <h2>美食节在线报名</h2>
+    <!-- 报名表单 method="post" 保留原有校验功能 -->
+    <form action="" method="post">
+        <label for="username">姓名：</label>
+        <input type="text" id="username" name="username" required 
+               placeholder="请输入你的真实姓名" maxlength="10">
+        <br>
+
+        <label for="phone">手机号：</label>
+        <input type="tel" id="phone" name="phone" 
+               pattern="^1[3-9]\d{9}$" placeholder="请输入11位手机号">
+        <br>
+
+        <label>性别：</label>
+        <input type="radio" id="male" name="gender" value="男">
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="女">
+        <label for="female">女</label>
+        <br>
+
+        <label>参加项目：</label>
+        <input type="checkbox" id="makeFood" name="project" value="美食制作">
+        <label for="makeFood">美食制作</label>
+        <input type="checkbox" id="tasteFood" name="project" value="美食品鉴">
+        <label for="tasteFood">美食品鉴</label>
+        <input type="checkbox" id="snack" name="project" value="小吃展销">
+        <label for="snack">小吃展销</label>
+        <br>
+
+        <label for="grade">年级：</label>
+        <select id="grade" name="grade">
+            <option value="">请选择年级</option>
+            <option value="一年级">一年级</option>
+            <option value="二年级">二年级</option>
+            <option value="三年级">三年级</option>
+            <option value="四年级">四年级</option>
+        </select>
+        <br>
+
+        <label for="msg">留言备注：</label>
+        <textarea id="msg" name="msg" placeholder="有其他需求可在此留言"></textarea>
+        <br>
+
+        <label></label>
+        <button type="submit">提交报名</button>
+    </form>
+
+    <!-- 2. 美食点评区域，每个点评容器添加 class="card" -->
+    <h2>美食点评专区</h2>
+    <div class="card">
+        <h3>点评一：招牌麻辣烫</h3>
+        <p>汤底鲜香浓郁，食材新鲜分量足，深夜食堂必打卡美食，推荐大家前来品尝！</p>
+    </div>
+
+    <div class="card">
+        <h3>点评二：手工糕点</h3>
+        <p>传统手艺制作，甜度适中、口感软糯，适合当做餐后小点心，老少皆宜。</p>
+    </div>
+
+    <div class="card">
+        <h3>点评三：特色拌面</h3>
+        <p>酱料搭配独特，面条劲道爽滑，性价比超高，是本次美食节热门单品。</p>
+    </div>
+</body>
+</html>

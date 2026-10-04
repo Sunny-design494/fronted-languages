@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 盒模型对比演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 默认使用怪异盒模型 */
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .box-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .box-wrapper {
+            text-align: center;
+        }
+
+        .box-label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* 标准盒模型示例 */
+        .standard-box {
+            width: 200px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #e74c3c;
+            margin: 10px;
+            background-color: #ecf0f1;
+            box-sizing: content-box; /* 标准盒模型 */
+            position: relative;
+        }
+
+        /* 怪异盒模型示例 */
+        .border-box {
+            width: 200px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid #27ae60;
+            margin: 10px;
+            background-color: #d5f4e6;
+            box-sizing: border-box; /* 怪异盒模型 */
+            position: relative;
+        }
+
+        .content-info {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+            color: #333;
+            text-align: center;
+        }
+
+        .calculation {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .comparison-table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .demo-controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .interactive-demo {
+            border: 2px dashed #bdc3c7;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .box-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS3 盒模型对比演示</h1>
+
+        <!-- 标准盒模型部分 -->
+        <div class="section">
+            <h2 class="section-title">📦 标准盒模型 (content-box)</h2>
+            <div class="description">
+                <strong>特点：</strong>在标准盒模型中，元素的总宽度 = width + padding + border<br>
+                width 属性只控制内容区域的宽度，padding 和 border 会额外增加元素的总尺寸。
+            </div>
+
+            <div class="box-container">
+                <div class="box-wrapper">
+                    <div class="standard-box">
+                        <div class="content-info">
+                            内容区域<br>
+                            200×110px
+                        </div>
+                    </div>
+                    <div class="box-label">标准盒模型</div>
+                </div>
+            </div>
+
+            <div class="calculation">
+                <strong>尺寸计算：</strong><br>
+                • 设置 width: 200px, height: 150px<br>
+                • padding: 20px (上下各20px)<br>
+                • border: 5px (上下各5px)<br>
+                • <span class="highlight">实际总宽度 = 200 + 20×2 + 5×2 = 250px</span><br>
+                • <span class="highlight">实际总高度 = 150 + 20×2 + 5×2 = 200px</span>
+            </div>
+        </div>
+
+        <!-- 怪异盒模型部分 -->
+        <div class="section">
+            <h2 class="section-title">🎯 怪异盒模型 (border-box)</h2>
+            <div class="description">
+                <strong>特点：</strong>在怪异盒模型中，元素的总宽度 = width (包含padding和border)<br>
+                width 属性控制的是整个盒子的宽度，padding 和 border 会从内容区域中扣除。
+            </div>
+
+            <div class="box-container">
+                <div class="box-wrapper">
+                    <div class="border-box">
+                        <div class="content-info">
+                            内容区域<br>
+                            150×100px
+                        </div>
+                    </div>
+                    <div class="box-label">怪异盒模型</div>
+                </div>
+            </div>
+
+            <div class="calculation">
+                <strong>尺寸计算：</strong><br>
+                • 设置 width: 200px, height: 150px<br>
+                • padding: 20px (上下各20px)<br>
+                • border: 5px (上下各5px)<br>
+                • <span class="highlight">实际总宽度 = 200px (固定不变)</span><br>
+                • <span class="highlight">内容区域宽度 = 200 - 20×2 - 5×2 = 150px</span><br>
+                • <span class="highlight">内容区域高度 = 150 - 20×2 - 5×2 = 100px</span>
+            </div>
+        </div>
+
+        <!-- 对比表格 -->
+        <div class="section">
+            <h2 class="section-title">📊 两种盒模型对比</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>特性</th>
+                        <th>标准盒模型 (content-box)</th>
+                        <th>怪异盒模型 (border-box)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>width 包含内容</td>
+                        <td>仅内容区域</td>
+                        <td>内容 + padding + border</td>
+                    </tr>
+                    <tr>
+                        <td>总宽度计算</td>
+                        <td>width + padding + border</td>
+                        <td>width (固定值)</td>
+                    </tr>
+                    <tr>
+                        <td>布局可预测性</td>
+                        <td>较低 (容易超出预期)</td>
+                        <td>较高 (尺寸固定)</td>
+                    </tr>
+                    <tr>
+                        <td>适用场景</td>
+                        <td>需要精确控制内容尺寸</td>
+                        <td>响应式布局、网格系统</td>
+                    </tr>
+                    <tr>
+                        <td>浏览器支持</td>
+                        <td>所有浏览器</td>
+                        <td>IE8+ 及现代浏览器</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 实际应用示例 -->
+        <div class="section">
+            <h2 class="section-title">🛠️ 实际应用示例</h2>
+            <div class="description">
+                下面展示两种盒模型在实际布局中的差异，特别关注当添加padding和border时元素的变化：
+            </div>
+
+            <div class="interactive-demo">
+                <h3 style="text-align: center; margin-bottom: 20px;">三栏布局对比</h3>
+                
+                <h4 style="color: #e74c3c; margin: 15px 0 10px 0;">标准盒模型布局：</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 30px;">
+                    <div style="flex: 1; background: #ffcccc; padding: 15px; border: 3px solid #e74c3c; box-sizing: content-box;">
+                        栏目 1<br>
+                        <small>设置宽度: 33.33%<br>实际会超出容器</small>
+                    </div>
+                    <div style="flex: 1; background: #ffcccc; padding: 15px; border: 3px solid #e74c3c; box-sizing: content-box;">
+                        栏目 2<br>
+                        <small>设置宽度: 33.33%<br>实际会超出容器</small>
+                    </div>
+                    <div style="flex: 1; background: #ffcccc; padding: 15px; border: 3px solid #e74c3c; box-sizing: content-box;">
+                        栏目 3<br>
+                        <small>设置宽度: 33.33%<br>实际会超出容器</small>
+                    </div>
+                </div>
+
+                <h4 style="color: #27ae60; margin: 15px 0 10px 0;">怪异盒模型布局：</h4>
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1; background: #ccffcc; padding: 15px; border: 3px solid #27ae60; box-sizing: border-box;">
+                        栏目 1<br>
+                        <small>设置宽度: 33.33%<br>完美适应容器</small>
+                    </div>
+                    <div style="flex: 1; background: #ccffcc; padding: 15px; border: 3px solid #27ae60; box-sizing: border-box;">
+                        栏目 2<br>
+                        <small>设置宽度: 33.33%<br>完美适应容器</small>
+                    </div>
+                    <div style="flex: 1; background: #ccffcc; padding: 15px; border: 3px solid #27ae60; box-sizing: border-box;">
+                        栏目 3<br>
+                        <small>设置宽度: 33.33%<br>完美适应容器</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 最佳实践 -->
+        <div class="section">
+            <h2 class="section-title">💡 最佳实践建议</h2>
+            <div class="description">
+                <strong>推荐使用怪异盒模型的原因：</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>更容易控制元素的总体尺寸</li>
+                    <li>在响应式设计中表现更好</li>
+                    <li>避免因为padding和border导致布局溢出</li>
+                    <li>更符合设计师的直觉思维</li>
+                </ul>
+            </div>
+
+            <div class="calculation">
+                <strong>推荐的CSS重置代码：</strong><br>
+                <code>
+                    * {<br>
+                    &nbsp;&nbsp;margin: 0;<br>
+                    &nbsp;&nbsp;padding: 0;<br>
+                    &nbsp;&nbsp;box-sizing: border-box;<br>
+                    }
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有盒子添加点击事件，显示详细信息
+            const boxes = document.querySelectorAll('.standard-box, .border-box');
+            
+            boxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    const rect = this.getBoundingClientRect();
+                    const computedStyle = window.getComputedStyle(this);
+                    
+                    console.log('盒子信息:', {
+                        类型: computedStyle.boxSizing,
+                        设置宽度: computedStyle.width,
+                        设置高度: computedStyle.height,
+                        实际宽度: rect.width,
+                        实际高度: rect.height,
+                        padding: computedStyle.padding,
+                        border: computedStyle.borderWidth
+                    });
+                    
+                    alert(`盒模型信息:\n类型: ${computedStyle.boxSizing}\n实际尺寸: ${rect.width.toFixed(0)} × ${rect.height.toFixed(0)}px`);
+                });
+            });
+
+            // 添加鼠标悬停效果
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                section.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
