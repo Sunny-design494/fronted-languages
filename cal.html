@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="cal.css">
+    <script src="cal.js" defer></script>
+</head>
+<!--1.做一个计算机页面-->
+
+<!--2.添加一个输入框-->
+
+<!--3.做18个按钮-->
+<body>
+
+    <div id="cal-body">
+            <div class="input">
+                <input id="result" type="text" readonly aria-label="计算结果">
+            </div>
+            <div style="padding-top: 5px;">
+                <!--4.添加按钮-->
+                <div class="buttons">
+                    <button type="button" data-action="clear">C</button>
+                    <button type="button" data-action="clear-entry">CE</button>
+                    <button type="button" data-value="/">/</button>
+                    <button type="button" data-value="*">*</button>
+                    <button type="button" data-value="7">7</button>
+                    <button type="button" data-value="8">8</button>
+                    <button type="button" data-value="9">9</button>
+                    <button type="button" data-value="-">-</button>
+                    <button type="button" data-value="4">4</button>
+                    <button type="button" data-value="5">5</button>
+                    <button type="button" data-value="6">6</button>
+                    <button type="button" data-value="+">+</button>
+                    <button type="button" data-value="1">1</button>
+                    <button type="button" data-value="2">2</button>
+                    <button type="button" data-value="3">3</button>
+                    <button type="button" class="equals" data-action="equals">=</button>
+                    <button type="button" class="zero" data-value="0">0</button>
+                    <button type="button" data-value=".">.</button>
+                    <button type="button" data-action="backspace">⌫</button>
+                </div>
+            </div>
+        </div>
+</body>

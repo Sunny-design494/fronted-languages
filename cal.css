@@ -1,0 +1,60 @@
+#cal-body {
+  width: 400px;
+  border-radius: 20px;
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  padding: 45px;/*内边距*/
+  scale: 0.6;/*整个大小*/
+}
+.input input {
+  height: 120px;
+  width: 85%;
+  border-radius: 10px;
+  background: #dde1e7;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+  border: 0;
+  color: rgb(116, 116, 116);
+  font-size: 3rem;
+  padding: 0 30px;
+}
+
+.input input:focus {
+  outline: none;
+  background: #dde1e7;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}/*输入框获得焦点时去除浏览器默认的轮廓，并维持背景和内阴影不变*/
+
+.buttons button {
+  cursor: pointer;/*让鼠标悬停时显示可点击状态*/
+  height: 80px;
+  width: 80px;
+  border: 0;
+  font-size: 2rem;
+  border-radius: 50px;
+  background: #dde1e7;
+  box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+  color: rgb(137, 137, 137);
+  
+}
+
+.buttons .zero {
+  grid-column: span 2;
+  width: auto;
+}
+
+.buttons .equals {
+  height: 80px;
+}
+
+.buttons button:focus {
+  background: #dde1e7;
+  box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}/*按钮获得焦点时，把外阴影改为内阴影，表现出按下的效果*/
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  justify-content: space-between;
+  row-gap: 20px;
+  padding-top: 20px;
+}
